@@ -67,65 +67,71 @@
 
 #****************************************************************************************************************************
 
-rock = '''
-Rock
-    _______
----'   ____)
-      (_____)
-      (_____)
-      (____)
----.__(___)
-'''
+# rock = '''
+# Rock
+#     _______
+# ---'   ____)
+#       (_____)
+#       (_____)
+#       (____)
+# ---.__(___)
+# '''
 
-paper = '''
-Papper
-    _______
----'   ____)____
-          ______)
-          _______)
-         _______)
----.__________)
-'''
+# paper = '''
+# Papper
+#     _______
+# ---'   ____)____
+#           ______)
+#           _______)
+#          _______)
+# ---.__________)
+# '''
 
-scissors = '''
-Scissors
-    _______
----'   ____)____
-          ______)
-       __________)
-      (____)
----.__(___)
-'''
+# scissors = '''
+# Scissors
+#     _______
+# ---'   ____)____
+#           ______)
+#        __________)
+#       (____)
+# ---.__(___)
+# '''
 
-#Write your code below this line 👇
-import random
+# #Write your code below this line 👇
+# import random
 
-rps = [rock, paper, scissors]
-human = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors \n"))
-print(rps[human])
+# rps = [rock, paper, scissors]
+# human = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors \n"))
+# print(rps[human])
 
-print("Computer Choose: ")
-comp = (random.choice(rps))
-print(comp)
+# print("Computer Choose: ")
+# comp = (random.choice(rps))
+# print(comp)
 
-if human == rock and comp == scissors:
-  print("You won")
-if human == paper and comp == rock:
-  print("You won")
-if human == scissors and comp == paper:
-  print("You won")
-if human == rock and comp == paper:
-  print("You loose")
-if human == paper and comp == scissors:
-  print("You loose")
-if human == scissors and comp == rock:
-  print("You loose")
-else:
-  print("Draw")
-
-
-
-
+# if human == rock and comp == scissors:
+#   print("You won")
+# if human == paper and comp == rock:
+#   print("You won")
+# if human == scissors and comp == paper:
+#   print("You won")
+# if human == rock and comp == paper:
+#   print("You loose")
+# if human == paper and comp == scissors:
+#   print("You loose")
+# if human == scissors and comp == rock:
+#   print("You loose")
+# else:
+#   print("Draw")
+#****************************************************************************************************************
+#for i in range (0 , 100): print(i)
 
 
 
+# l = []
+# n = int(input("Size of array: "))
+# for i in range (0,n):
+#   l.append(int(l[i]))
+# print(l)
+
+x= input("emter a list of name :").split()
+print(x)
