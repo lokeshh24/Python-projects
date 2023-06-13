@@ -300,41 +300,112 @@ data = [
         'country': 'United States'
     }
 ]
-from random import randint
+logo = """
+    __  ___       __             
+   / / / (_)___ _/ /_  ___  _____
+  / /_/ / / __ `/ __ \/ _ \/ ___/
+ / __  / / /_/ / / / /  __/ /    
+/_/ ///_/\__, /_/ /_/\___/_/     
+   / /  /____/_      _____  _____
+  / /   / __ \ | /| / / _ \/ ___/
+ / /___/ /_/ / |/ |/ /  __/ /    
+/_____/\____/|__/|__/\___/_/     
+"""
 
-#To generate two random numbers that will be the index no of any elelment in dictonary
-# Store those value in something 
+vs = """
+ _    __    
+| |  / /____
+| | / / ___/
+| |/ (__  ) 
+|___/____(_)
+"""
+import random
 
-element1 = data[randint(0,50)]
-element2 = data[randint(0,50)]
-print(element1)
-print(element2)
 
-answer = max(element1['follower_count'], element2['follower_count'])
-# print(answer)
-def result():
-    if guess == 'A':
-        return element1['follower_count']
+def get_random_account():
+  """Get data from random account"""
+  return random.choice(data)
+
+def format_data(account):
+  """Format account into printable format: name, description and country"""
+  name = account["name"]
+  description = account["description"]
+  country = account["country"]
+  # print(f'{name}: {account["follower_count"]}')
+  return f"{name}, a {description}, from {country}"
+
+def check_answer(guess, a_followers, b_followers):
+  """Checks followers against user's guess 
+  and returns True if they got it right.
+  Or False if they got it wrong.""" 
+  if a_followers > b_followers:
+    return guess == "a"
+  else:
+    return guess == "b"
+
+
+def game():
+  print(logo)
+  score = 0
+  game_should_continue = True
+  account_a = get_random_account()
+  account_b = get_random_account()
+
+  while game_should_continue:
+    account_a = account_b
+    account_b = get_random_account()
+
+    while account_a == account_b:
+      account_b = get_random_account()
+
+    print(f"Compare A: {format_data(account_a)}.")
+    print(vs)
+    print(f"Against B: {format_data(account_b)}.")
+    
+    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+    a_followers = account_a["follower_count"]
+    b_followers = account_b["follower_count"]
+    is_correct = check_answer(guess, a_followers, b_followers)
+
+    print(logo)
+    if is_correct:
+      score += 1
+      print(f"You're right! Current score: {score}.")
+      account_a
     else:
-        return element2['follower_count']  
-result()
+      game_should_continue = False
+      print(f"Sorry, that's wrong. Final score: {score}")
 
-#Initialization 
-print(f"Compare A {element1['name']}, a {element1['description']}, from {element1['country']}.")
-print(f"Compare B {element2['name']}, a {element2['description']}, from {element2['country']}.")
-global guess
-guess = input("WHo has more followers? Type 'A' or 'B'")
+game()
+
+'''
+
+FAQ: Why does choice B always become choice A in every round, even when A had more followers? 
+
+Suppose you just started the game and you are comparing the followers of A - Instagram (364k) to B - Selena Gomez (174k). Instagram has more followers, so choice A is correct. However, the subsequent comparison should be between Selena Gomez (the new A) and someone else. The reason is that everything in our list has fewer followers than Instagram. If we were to keep Instagram as part of the comparison (as choice A) then Instagram would stay there for the rest of the game. This would be quite boring. By swapping choice B for A each round, we avoid a situation where the number of followers of choice A keeps going up over the course of the game. Hope that makes sense :-)
+
+'''
 
 
 
+# Generate a random account from the game data.
 
+# Format account data into printable format.
 
+# Ask user for a guess.
 
-# Make a function to compare those values with users guess 
-# if user guess is right the loop will go on  
-# if guess == 'A':
-#     result = element1
-# else:
-#     result = element2
+# Check if user is correct.
+## Get follower count.
+## If Statement
 
-# print(result['follower_count'])      
+# Feedback.
+
+# Score Keeping.
+
+# Make game repeatable.
+
+# Make B become the next A.
+
+# Add art.
+
+# Clear screen between rounds.

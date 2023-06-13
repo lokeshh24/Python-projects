@@ -300,3 +300,163 @@ data = [
         'country': 'United States'
     }
 ]
+logo = """
+    __  ___       __             
+   / / / (_)___ _/ /_  ___  _____
+  / /_/ / / __ `/ __ \/ _ \/ ___/
+ / __  / / /_/ / / / /  __/ /    
+/_/ ///_/\__, /_/ /_/\___/_/     
+   / /  /____/_      _____  _____
+  / /   / __ \ | /| / / _ \/ ___/
+ / /___/ /_/ / |/ |/ /  __/ /    
+/_____/\____/|__/|__/\___/_/     
+"""
+
+vs = """
+ _    __    
+| |  / /____
+| | / / ___/
+| |/ (__  ) 
+|___/____(_)
+"""
+
+import random
+import os
+
+def get_random_account():
+  """Get data from random account"""
+  return random.choice(data)
+
+
+def format_data(account):
+  """Format account into printable format: name, description and country"""
+  name = account['name']
+  descr = account['description']
+  country = account['country']
+  return f"{name}, a {descr}, from {country}"
+  
+
+
+def check_answer(guess, a_followers, b_followers):
+  """Checks followers against user's guess 
+  and returns True if they got it right.
+  Or False if they got it wrong.""" 
+  if a_followers > b_followers:
+    return guess == 'a'
+  else:
+    return guess == 'b'
+def game():
+  print(logo)
+  score = 0
+  game_should_continue = True 
+  account_a = get_random_account()
+  account_b = get_random_account()
+
+#   while game_should_continue:
+#     account_a = account_b
+#     account_b = get_random_account()  
+  while account_a == account_b:
+    account_b = get_random_account()
+
+  print(f"Compare A: {format_data(account_a)}.")  
+  print(vs)
+  print(f"Against B: {format_data(account_b)}.")  
+  guess = input("Who has ")
+
+game()
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def game():
+  print(logo)
+  score = 0
+  game_should_continue = True
+  account_a = get_random_account()
+  account_b = get_random_account()
+
+  while game_should_continue:
+    account_a = account_b
+    account_b = get_random_account()
+
+    while account_a == account_b:
+      account_b = get_random_account()
+
+    print(f"Compare A: {format_data(account_a)}.")
+    print(vs)
+    print(f"Against B: {format_data(account_b)}.")
+    
+    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+    a_follower_count = account_a["follower_count"]
+    b_follower_count = account_b["follower_count"]
+    is_correct = check_answer(guess, a_follower_count, b_follower_count)
+
+    print(logo)
+    if is_correct:
+      score += 1
+      print(f"You're right! Current score: {score}.")
+    else:
+      game_should_continue = False
+      print(f"Sorry, that's wrong. Final score: {score}")
+
+game()
+
+
+
+
+
+
+
+
+
+
+
+
+# count = 0   
+# def run():
+#     account_a = data[randint(0,50)]
+#     should_continue = True
+#     while should_continue:
+#         account_b = data[randint(0,50)]
+#         answer = max(account_a['follower_count'], account_b['follower_count'])
+#         print(logo)
+#         global count 
+#         print(f"You're right, current score {count}")
+#         print(f"Compare A {account_a['name']}, a {account_a['description']}, from {account_a['country']}.")
+#         print(vs)
+#         print(f"Compare B {account_b['name']}, a {account_b['description']}, from {account_b['country']}.")
+#         guess = input("Who has more followers? Type 'A' or 'B': ")
+#         if guess == 'A':
+#             value = account_a['follower_count']
+#         elif guess == 'B':
+#             value = account_b['follower_count']
+#         else:
+#             print("Invalid Input")
+#         if value == answer:
+#             account_a = account_b
+#             count = count + 1
+#             os.system('cls') 
+#             # run()
+#         else:
+#             os.system('cls') 
+#             print(f"Sorry, that's. Final Score: {count}")
+#             should_continue = False
+# run()   
