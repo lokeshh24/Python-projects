@@ -29,7 +29,6 @@ class Snake:
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
-
     def move(self):
         for seg_num in range (len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num -1].xcor()
@@ -50,8 +49,6 @@ class Snake:
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
-
-
 class Food(Turtle):
     def __init__(self):
         super().__init__()
@@ -60,21 +57,17 @@ class Food(Turtle):
         self.shapesize(stretch_len=0.5, stretch_wid=0.5)
         self.color("red")
         self.speed("fastest")
-        self.refresh()
-        
+        self.refresh()       
 
     def refresh(self):
         random_x = random.randint(-280, 280)
         random_y = random.randint(-280, 280)
         self.goto(random_x, random_y)
 
-
-
 ALIGNMENT = "center"
 FONT = ("Courier", 16, "normal")
 
 class Scoreboard(Turtle):
-
     def __init__(self):
         super().__init__()
         self.score = 0
@@ -97,28 +90,10 @@ class Scoreboard(Turtle):
         self.clear()
         self.update_scoreboard()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 import time 
-
-
-
-
 
 screen = Screen()
 screen.setup(width=600,height=600)
@@ -129,7 +104,6 @@ screen.tracer(0)
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
-
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -158,9 +132,7 @@ while game_is_on:
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_is_on = False
-            scoreboard.game_over()
-            
+            scoreboard.game_over()           
     #if head collides with any segment in the tail.
     #trigger game over 
-
 screen.exitonclick()
